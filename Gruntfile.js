@@ -272,7 +272,7 @@ module.exports = function (grunt) {
           src: [
             '*.{ico,png,txt}',
             'CNAME',
-            'bower_components/**/*',
+	          'README.md',
             'images/{,*/}*.{gif,webp}',
             'styles/fonts/*'
           ]
