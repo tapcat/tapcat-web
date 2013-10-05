@@ -41,5 +41,8 @@ after_success:
   - git add -u
   # add all new
   - git add *
+  - git config --global user.email "travis@github.com"
+  - git config --global user.name "Tapcat Travis Worker"
+  - git config --global push.default simple
   - git commit -m "Travis deploy"
   - git push
