@@ -32,11 +32,11 @@ after_success:
   # Done. Git will not ask for password
   # Let's deploy our payload
   - git clone git@github.com:tapcat/tapcat.github.io.git
-  - rm -rf tapcat.github.io.git/*
-  - mv -f dist/* tapcat.github.io.git/
+  - rm -rf tapcat.github.io/*
+  - mv -f dist/* tapcat.github.io/
   # last commit log message from web repo
   - COMMIT_TEXT=$(git log -n 1 | tail -n +5)
-  - cd tapcat.github.io.git
+  - cd tapcat.github.io
   # remove all deleted
   - git add -u
   # add all new
