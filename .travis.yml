@@ -4,10 +4,35 @@ node_js:
 rvm:
   - 1.9.2
 
-before_install: gem install compass
+env:
+  global:
+    # PASSWORD=pwd
+      secure: "jycz3qCzmEe8nlAgr45+VNsVK03bT18t5gqXUAUhHre/Oz3XgiZNS9R+gFFXrkAEpZf7xeZI9eJStG792bimpSSV+6EAWto9gOA7rAWct8Qcga8SZxn8HsgBQzxfZTDO4lPk0lBOk6UtApTF7Vp4Od0cphz5j4kGoTOf9SWt1J4="
+
+before_install:
+  - gem install compass
+  - ssh-add -D
 
 before_script:
   - 'npm install -g bower grunt-cli'
   - 'bower install --force-latest'
   - export DISPLAY=:99.0
   - sh -e /etc/init.d/xvfb start
+
+after_success:
+# encrypt -> openssl aes-256-cbc -k "pwd" -in id_rsa -out id_rsa.enc -a
+# decrypt -> openssl aes-256-cbc -k "pwd" -in deploy_key.enc -d -a -out id_rsa
+  - openssl aes-256-cbc -k $PASSWORD -in deploy_key.enc -d -a -out id_rsa
+  - chmod 600 id_rsa
+  - ssh-add id_rsa
+  - git clone git@github.com:tapcat/tapcat.github.io.git
+  - rm -rf tapcat.github.io.git/*
+  - mv -f dist/* tapcat.github.io.git/
+  # last commit log message from web repo
+  - COMMIT_TEXT=$(git log -n 1 | tail -n +5)
+  - cd tapcat.github.io.git
+  # remove all deleted
+  - git add -u
+  # add all new
+  - git add *
+  - git commit -m "Travis deploy: "COMMIT_TEXT
