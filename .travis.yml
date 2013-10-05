@@ -7,7 +7,7 @@ rvm:
 env:
   global:
     # PASSWORD=pwd
-      secure: "jycz3qCzmEe8nlAgr45+VNsVK03bT18t5gqXUAUhHre/Oz3XgiZNS9R+gFFXrkAEpZf7xeZI9eJStG792bimpSSV+6EAWto9gOA7rAWct8Qcga8SZxn8HsgBQzxfZTDO4lPk0lBOk6UtApTF7Vp4Od0cphz5j4kGoTOf9SWt1J4="
+    secure: "jycz3qCzmEe8nlAgr45+VNsVK03bT18t5gqXUAUhHre/Oz3XgiZNS9R+gFFXrkAEpZf7xeZI9eJStG792bimpSSV+6EAWto9gOA7rAWct8Qcga8SZxn8HsgBQzxfZTDO4lPk0lBOk6UtApTF7Vp4Od0cphz5j4kGoTOf9SWt1J4="
 
 before_install:
   - gem install compass
