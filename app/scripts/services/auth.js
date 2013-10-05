@@ -27,5 +27,5 @@ angular.module('tapcatWebApp')
 		return {
 			login: login,
 			logout: logout
-		}
+		};
 	}]);
