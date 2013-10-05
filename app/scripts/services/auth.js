@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('tapcatWebApp')
-	.service('personaAuthService', ['$http', function DeviceOrientation($http) {
+	.service('personaAuthService', ['$http', function ($http) {
 
 		var login = function(assertion) {
 			$http.post('//api.tapcat.net/login', 'assertion=' + assertion, {
