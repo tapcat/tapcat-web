@@ -14,7 +14,7 @@
 <script>
     angular.module('tapcatWebApp')
             .controller('AuthDevCtrl',['$scope', '$http', 'personaAuthService', function ($scope, $http, $authService) {
-                <!-- login with persona test user -->
+                // login with persona test user
                 $http.get('/personaid/email_with_assertion/https%3A%2F%2Fapi.tapcat.net:80/')
                         .success(function(data) {
                             $authService.login(data.assertion);
