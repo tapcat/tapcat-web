@@ -35,4 +35,4 @@ after_success:
   - git add -u
   # add all new
   - git add *
-  - git commit -m "Travis deploy: "COMMIT_TEXT
+  - git commit -m "Travis deploy: $COMMIT_TEXT"
