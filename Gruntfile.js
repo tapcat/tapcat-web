@@ -394,7 +394,7 @@ module.exports = function (grunt) {
     'ngmin',
     'cssmin',
     'uglify',
-    'rev',
+    //'rev', -> seems like revision numbers are useless with github pages
     'usemin'
   ]);
 
