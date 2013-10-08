@@ -1,12 +1,10 @@
 'use strict';
 
 angular.module('tapcatWebApp', ['ngRoute'])
-	.config(['$httpProvider', function($httpProvider) {
+	.config(['$httpProvider', '$routeProvider', function($httpProvider, $routeProvider) {
 		$httpProvider.defaults.withCredentials = true;
-	}])
-  .config(function ($routeProvider) {
-    $routeProvider
-      .otherwise({
-        redirectTo: '/'
-      });
-  });
+		$routeProvider
+			.otherwise({
+				redirectTo: '/'
+			});
+	}]);
