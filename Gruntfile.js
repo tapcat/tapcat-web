@@ -197,20 +197,8 @@ module.exports = function (grunt) {
     /*concat: {
       dist: {}
     },*/
-    rev: {
-      dist: {
-        files: {
-          src: [
-            '<%= yeoman.dist %>/scripts/{,*/}*.js',
-            '<%= yeoman.dist %>/styles/{,*/}*.css',
-            '<%= yeoman.dist %>/images/{,*/}*.{png,jpg,jpeg,gif,webp,svg}',
-            '<%= yeoman.dist %>/styles/fonts/*'
-          ]
-        }
-      }
-    },
     useminPrepare: {
-      html: '<%= yeoman.app %>/index.html',
+      html: '<%= yeoman.app %>/*.html',
       options: {
         dest: '<%= yeoman.dist %>'
       }
@@ -394,7 +382,6 @@ module.exports = function (grunt) {
     'ngmin',
     'cssmin',
     'uglify',
-    //'rev', -> seems like revision numbers are useless with github pages
     'usemin'
   ]);
 
