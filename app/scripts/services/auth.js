@@ -8,9 +8,7 @@ angular.module('tapcatWebApp')
 				headers: {'Content-Type': 'application/x-www-form-urlencoded'}
 			})
 				.success(function() {
-					// experiment only. Another request should contains cookies
-					$http.get('http://api.tapcat.net/user/');
-					//window.location = '/user';
+					window.location = '/app';
 				})
 				.error(function() {
 					navigator.id.logout();
