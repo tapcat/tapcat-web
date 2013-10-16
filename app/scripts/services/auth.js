@@ -1,14 +1,14 @@
 'use strict';
 
 angular.module('tapcatWebApp')
-	.service('personaAuthService', ['$http', function ($http) {
+	.service('personaAuthService', ['$http', 'login-url', 'logout-url', 'success-login-url', function ($http, loginUrl, logoutUrl, successUrl) {
 
 		var login = function(assertion) {
-			$http.post('http://api.tapcat.net/login', 'assertion=' + assertion, {
+			$http.post(loginUrl, 'assertion=' + assertion, {
 				headers: {'Content-Type': 'application/x-www-form-urlencoded'}
 			})
 				.success(function() {
-					window.location = '/app';
+					window.location = successUrl;
 				})
 				.error(function() {
 					navigator.id.logout();
@@ -16,7 +16,7 @@ angular.module('tapcatWebApp')
 		};
 
 		var logout = function() {
-			$http.post('/logout').then(function() {
+			$http.post(logoutUrl).then(function() {
 				window.location = '/';
 			});
 		};
