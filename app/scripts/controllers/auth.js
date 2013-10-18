@@ -1,8 +1,7 @@
 'use strict';
 
 angular.module('tapcatWebApp')
-	.controller('AuthCtrl',['$scope', '$http', 'personaAuthService', function ($scope, $http) {
+	.controller('AuthCtrl',['$scope', 'Restangular', 'personaAuthService', function ($scope, Restangular) {
 		$scope.login = function() { navigator.id.request(); };
-		$http.get('http://api.tapcat.net/user/')
-			.success(function() { $scope.login = function() { window.location = '/app'; }; });
+		Restangular.one('user').get().then(function() { $scope.login = function() { window.location = '/app'; }; });
 	}]);

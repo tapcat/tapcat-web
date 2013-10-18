@@ -1,13 +1,18 @@
 'use strict';
 
-angular.module('tapcatWebApp', ['ngRoute'])
+angular.module('tapcatWebApp', ['ngRoute', 'restangular'])
 	.constant('api-url', 'http://api.tapcat.net')
 	.constant('login-url', 'http://api.tapcat.net/login')
 	.constant('logout-url', 'http://api.tapcat.net/logout')
 	.constant('success-login-url', '/app')
-	.config(['$httpProvider', '$routeProvider', function($httpProvider, $routeProvider) {
+	.config(['$httpProvider', '$routeProvider', 'RestangularProvider', 'api-url', function($httpProvider, $routeProvider, restangularProvider, apiUrl) {
 		$httpProvider.defaults.withCredentials = true;
+		restangularProvider.setBaseUrl(apiUrl);
 		$routeProvider
+			.when('/', {
+				templateUrl: 'views/app.html',
+				controller: 'AppCtrl'
+			})
 			.otherwise({
 				redirectTo: '/'
 			});

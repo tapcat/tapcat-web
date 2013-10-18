@@ -10,7 +10,6 @@
   <body ng-app="tapcatWebApp">
 
     <div class="container" ng-view="">
-        Welcome
     </div>
 
     <script>
@@ -23,11 +22,16 @@
         ga('send', 'pageview');
     </script>
 
+    <!-- build:js({.tmp,app}) scripts/app-libs.js -->
     <script src="bower_components/angular/angular.js"></script>
     <script src="bower_components/angular-route/angular-route.js"></script>
+    <script src="bower_components/lodash/dist/lodash.min.js"></script>
+    <script src="bower_components/restangular/dist/restangular.min.js"></script>
+    <!-- endbuild -->
 
-    <!-- build:js({.tmp,app}) scripts/scripts.js -->
-    <script src="scripts/app.js"></script>
+    <!-- build:js({.tmp,app}) scripts/app.js -->
+        <script src="scripts/app.js"></script>
+        <script src="scripts/controllers/app.js"></script>
     <!-- endbuild -->
 </body>
 </html>
