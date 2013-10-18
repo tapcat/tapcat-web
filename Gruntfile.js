@@ -3,6 +3,7 @@
 var LIVERELOAD_PORT = 35729;
 var lrSnippet = require('connect-livereload')({ port: LIVERELOAD_PORT });
 var proxySnippet = require('grunt-connect-proxy/lib/utils').proxyRequest;
+var rewriteRulesSnippet = require('grunt-connect-rewrite/lib/utils').rewriteRequest;
 var mountFolder = function (connect, dir) {
   return connect.static(require('path').resolve(dir));
 };
@@ -18,6 +19,7 @@ module.exports = function (grunt) {
   require('time-grunt')(grunt);
 
 	grunt.loadNpmTasks('grunt-connect-proxy');
+	grunt.loadNpmTasks('grunt-connect-rewrite');
 
   // configurable paths
   var yeomanConfig = {
@@ -77,6 +79,9 @@ module.exports = function (grunt) {
         // Change this to '0.0.0.0' to access the server from outside.
         hostname: 'localhost'
       },
+	    rules: {
+		    '^(/[^.]+)$': '$1.html'
+	    },
 	    proxies: [
 		    {
 			    context: ['/personaid'],
@@ -94,6 +99,7 @@ module.exports = function (grunt) {
             return [
               lrSnippet,
 	            proxySnippet,
+	            rewriteRulesSnippet, // RewriteRules support
               mountFolder(connect, '.tmp'),
               mountFolder(connect, yeomanConfig.app)
             ];
@@ -357,6 +363,7 @@ module.exports = function (grunt) {
       'concurrent:server',
       'autoprefixer',
 	    'configureProxies',
+	    'configureRewriteRules',
       'connect:livereload',
       'open',
       'watch'
