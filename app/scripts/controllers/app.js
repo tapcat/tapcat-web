@@ -2,5 +2,7 @@
 
 angular.module('tapcatWebApp')
 	.controller('AppCtrl',['$scope', 'Restangular', function ($scope, Restangular) {
-		$scope.user = Restangular.one('user').get();
+		Restangular.one('user').get().then(function(user) {
+			$scope.user = user;
+		});
 	}]);
